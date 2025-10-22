@@ -23,7 +23,7 @@ const PropertyDetail = () => {
   }
 
   const property = properties?.find(
-    (p) => encodeURIComponent(p.PropertyName) === name
+    (p) => p.PropertyName === name
   );
 
   if (!property) {
