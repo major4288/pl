@@ -63,7 +63,10 @@ const PropertyDetail = () => {
   };
 
   const overviewData = parseOverview(property.Overview);
-  const affiliateUrl = `${property.AffiliateLink}?utm_source=propella`;
+  const hasAffiliateLink = property.AffiliateLink && property.AffiliateLink.trim() !== "";
+  const affiliateUrl = hasAffiliateLink 
+    ? `${property.AffiliateLink.trim()}${property.AffiliateLink.includes('?') ? '&' : '?'}utm_source=propella`
+    : "";
 
   return (
     <div className="min-h-screen bg-background">
@@ -134,12 +137,18 @@ const PropertyDetail = () => {
               </CardContent>
             </Card>
 
-            <a href={affiliateUrl} target="_blank" rel="noopener noreferrer" className="block">
-              <Button size="lg" className="w-full h-14 text-lg">
-                Enquire Now
-                <ExternalLink className="w-5 h-5 ml-2" />
+            {hasAffiliateLink ? (
+              <a href={affiliateUrl} target="_blank" rel="noopener noreferrer" className="block">
+                <Button size="lg" className="w-full h-14 text-lg">
+                  Enquire Now
+                  <ExternalLink className="w-5 h-5 ml-2" />
+                </Button>
+              </a>
+            ) : (
+              <Button size="lg" className="w-full h-14 text-lg" disabled>
+                Contact Information Not Available
               </Button>
-            </a>
+            )}
           </div>
         </div>
       </div>
