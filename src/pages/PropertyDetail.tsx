@@ -63,9 +63,10 @@ const PropertyDetail = () => {
   };
 
   const overviewData = parseOverview(property.Overview);
-  const hasAffiliateLink = property.AffiliateLink && property.AffiliateLink.trim() !== "";
+  const affiliateLink = property["Affliate link"];
+  const hasAffiliateLink = affiliateLink && affiliateLink.trim() !== "";
   const affiliateUrl = hasAffiliateLink 
-    ? `${property.AffiliateLink.trim()}${property.AffiliateLink.includes('?') ? '&' : '?'}utm_source=propella`
+    ? `${affiliateLink.trim()}${affiliateLink.includes('?') ? '&' : '?'}utm_source=propella`
     : "";
 
   return (

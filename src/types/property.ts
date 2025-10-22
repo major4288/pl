@@ -8,7 +8,7 @@ export interface Property {
   Description: string;
   ImageURL: string;
   Overview: string;
-  AffiliateLink: string;
+  "Affliate link": string; // Note: The sheet has a typo in the column name
 }
 
 export interface ParsedOverview {
