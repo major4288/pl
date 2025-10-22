@@ -46,7 +46,8 @@ const PropertyDetail = () => {
   }
 
   const formatPrice = (price: string) => {
-    return price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const cleanPrice = price.replace(/[₹,]/g, "").trim();
+    return cleanPrice.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   const parseOverview = (overview: string): ParsedOverview => {
